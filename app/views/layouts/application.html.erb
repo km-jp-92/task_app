@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Taskapp</title>
+    <title>タスクトレイン</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <header class="bg-blue-600 text-white p-6 shadow-lg">
+      <div class="container mx-auto text-3xl font-bold">
+        タスクトレイン
+      </div>
+    </header>
+    <main class="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-yellow-50 via-blue-50 to-pink-50">
       <%= yield %>
     </main>
+    <footer class="bg-gray-100 text-center text-gray-500 p-4 text-sm">
+      © 2025 タスクトレイン
+    </footer>
   </body>
 </html>
