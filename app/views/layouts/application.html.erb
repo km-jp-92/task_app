@@ -14,6 +14,12 @@
       <div class="max-w-7xl mx-auto text-center text-2xl font-semibold p-4">
         Todoリスト
       </div>
+      <div class="text-right p-2">
+        <turbo-frame id="completed_count">
+          累計完了タスク数：<%= current_user.tasks.completed.count %> 件
+        </turbo-frame>
+      </div>
+
     </header>
 
     <%= turbo_frame_tag "flash" do %>
