@@ -1,4 +1,6 @@
-<%= turbo_stream.remove @task %>
+<%= turbo_stream.replace dom_id(@task) do %>
+  <%= render @task %>
+<% end %>
 
 <%= turbo_stream.update "flash" do %>
   <% if flash[:notice] %>

@@ -1,9 +1,10 @@
-<h1>タスク一覧</h1>
+<div class="container mx-auto px-4 py-8">
 
-<p>
-  <%= link_to "新規タスク作成", new_task_path, class: "btn btn-primary" %>
-</p>
+  <p class="mb-6 text-center">
+    <%= link_to "新規Todo作成", new_task_path, class: "inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition" %>
+  </p>
 
-<div id="tasks">
-  <%= render @tasks %>
+  <div id="tasks" class="space-y-4">
+    <%= render @tasks %>
+  </div>
 </div>

@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :complete]
 
   def index
-    @tasks = current_user.tasks.order(due_date: :asc)
+    @tasks = current_user.tasks.pending.order(due_date: :asc)
   end
 
   def show; end
@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      redirect_to tasks_path, notice: "タスクを作成しました。"
+      redirect_to tasks_path, notice: "Todoを作成しました", status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,14 +25,20 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, notice: "タスクを更新しました。"
+      redirect_to tasks_path, notice: "Todoを更新しました", status: :see_other
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @task.destroy
+    flash[:notice] = "Todoを削除しました"
+  end
+
+  def complete
+    @task.completed!
+    flash[:notice] = "Todoを完了しました"
   end
 
   private

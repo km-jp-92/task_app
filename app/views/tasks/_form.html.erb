@@ -1,27 +1,27 @@
 <%= form_with model: task,
               local: true,
               data: { turbo: false } do |f| %>
-    <% if @task.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-          <% @task.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+  <% if task.errors.any? %>
+    <div id="error_explanation" class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+      <ul class="list-disc list-inside">
+        <% task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
 
-    <div class="field">
-      <%= f.label :due_date %>
-      <%= f.date_field :due_date %>
-    </div>
+  <div class="field mb-4">
+    <%= f.label :title, "Todo", class: "block text-gray-700 font-semibold mb-1" %>
+    <%= f.text_field :title, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+  </div>
 
-    <div class="actions">
-      <%= f.submit class: "btn btn-primary" %>
-    </div>
+  <div class="field mb-4">
+    <%= f.label :due_date, "期限", class: "block text-gray-700 font-semibold mb-1" %>
+    <%= f.date_field :due_date, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+  </div>
+
+  <div class="actions text-center">
+    <%= f.submit submit_label, class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition" %>
+  </div>
 <% end %>
