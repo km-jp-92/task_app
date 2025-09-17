@@ -14,7 +14,3 @@ ja:
               blank: "を入力してください"
             due_date:
               blank: "を入力してください"
-  devise:
-    sessions:
-      signed_in: "ログインしました"
-      signed_out: "ログアウトしました"

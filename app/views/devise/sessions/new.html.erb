@@ -1,26 +1,31 @@
-<h2>Log in</h2>
+<div class="bg-white shadow-md rounded-lg p-6 mx-auto mt-10 w-full max-w-sm">
+    <h2 class="text-2xl font-bold mb-6 text-center">ログイン</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="mb-4">
+        <%= f.label :email, class: "block text-gray-700 font-medium mb-1" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="mb-4">
+        <%= f.label :password, class: "block text-gray-700 font-medium mb-1" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <% if devise_mapping.rememberable? %>
+        <div class="mb-4 flex items-center">
+          <%= f.check_box :remember_me, class: "mr-2" %>
+          <%= f.label :remember_me, class: "text-gray-700" %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%= f.submit "ログイン", class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full transition" %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-4">
+      <%= link_to "新規登録", new_user_registration_path, class: "text-blue-500 hover:underline text-sm" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
