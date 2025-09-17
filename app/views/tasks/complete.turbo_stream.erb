@@ -9,5 +9,5 @@
 <% end %>
 
 <%= turbo_stream.update "completed_count" do %>
-  累計完了タスク数：<%= current_user.tasks.completed.count %> 件
+  累計完了Todo数：<%= current_user.tasks.completed.count %> 件
 <% end %>
