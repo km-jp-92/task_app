@@ -3,5 +3,9 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :tasks do
     patch :complete, on: :member
+
+    collection do
+      get :high_priority
+    end
   end
 end

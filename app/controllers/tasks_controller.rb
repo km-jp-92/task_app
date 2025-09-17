@@ -41,6 +41,11 @@ class TasksController < ApplicationController
     flash.now[:notice] = "Todoを完了しました"
   end
 
+  def high_priority
+    @tasks = current_user.tasks.pending.high.order(due_date: :asc)
+    render :index
+  end
+
   private
 
   def set_task
@@ -48,6 +53,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :due_date)
+    params.require(:task).permit(:title, :due_date, :priority)
   end
 end

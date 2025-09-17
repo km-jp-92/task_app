@@ -2,6 +2,14 @@
   <div class="task bg-white shadow-md rounded p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 hover:shadow-lg transition">
     
     <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+      <div class="w-6 text-center flex-shrink-0">
+        <% if task.high? %>
+          <span class="text-red-600 font-bold">重</span>
+        <% else %>
+          &nbsp;
+        <% end %>
+      </div>
+
       <strong class="text-gray-800 text-lg"><%= task.title %></strong>
       <span class="text-blue-500 font-semibold"><%= task.due_date_with_wday %></span>
       <% if task.due_date == Date.current %>

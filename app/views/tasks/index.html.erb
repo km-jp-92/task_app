@@ -5,9 +5,24 @@
     </turbo-frame>
   </div>
 
-  <p class="mb-6 text-center">
-    <%= link_to "新規Todo作成", new_task_path, class: "inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition" %>
-  </p>
+  <div class="mb-6 flex justify-between items-center">
+    <div class="flex-1"></div>
+
+    <div class="flex-1 text-center">
+      <%= link_to "新規Todo作成", new_task_path, 
+            class: "inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded shadow transition duration-200 ease-in-out" %>
+    </div>
+
+    <div class="flex-1 text-right">
+    <% if current_page?(high_priority_tasks_path) %>
+      <%= link_to "Todo一覧に戻る", tasks_path,
+            class: "inline-block bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded shadow transition duration-200 ease-in-out" %>
+    <% else %>
+      <%= link_to "重要Todoのみで絞り込む", high_priority_tasks_path, 
+            class: "inline-block bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded shadow transition duration-200 ease-in-out" %>
+    <% end %>
+  </div>
+  </div>
 
   <div id="tasks" class="space-y-4">
     <%= render @tasks %>
