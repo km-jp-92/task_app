@@ -13,9 +13,9 @@
       <strong class="text-gray-800 text-lg"><%= task.title %></strong>
       <span class="text-blue-500 font-semibold"><%= task.due_date_with_wday %></span>
       <% if task.due_date == Date.current %>
-        <span class="text-red-500 font-semibold ml-2">今日が期限です</span>
+        <span class="text-red-500 font-semibold ml-2">本日期限</span>
       <% elsif task.due_date < Date.current %>
-        <span class="text-gray-500 font-semibold ml-2">期限を過ぎています</span>
+        <span class="text-gray-500 font-semibold ml-2">期限切れ</span>
       <% end %>
       <%= link_to "完了する", complete_task_path(task), data: { turbo_method: :patch, turbo_confirm: "完了します(Todo一覧から消えます)" }, class: "bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded" %>
 
