@@ -33,12 +33,12 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    flash[:notice] = "Todoを削除しました"
+    flash.now[:notice] = "Todoを削除しました"
   end
 
   def complete
     @task.completed!
-    flash[:notice] = "Todoを完了しました"
+    flash.now[:notice] = "Todoを完了しました"
   end
 
   private
