@@ -1,0 +1,30 @@
+<%= turbo_frame_tag dom_id(task) do %>
+  <div class="task bg-white shadow-md rounded p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 hover:shadow-lg transition">
+    
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+      <div class="w-6 text-center flex-shrink-0">
+        <% if task.high? %>
+          <span class="text-red-600 font-bold">重</span>
+        <% else %>
+          &nbsp;
+        <% end %>
+      </div>
+
+      <strong class="text-gray-800 text-lg"><%= task.title %></strong>
+      <span class="text-blue-500 font-semibold"><%= task.due_date_with_wday %></span>
+      <% if task.due_date == Date.current %>
+        <span class="text-red-500 font-semibold ml-2">今日が期限です</span>
+      <% elsif task.due_date < Date.current %>
+        <span class="text-gray-500 font-semibold ml-2">期限を過ぎています</span>
+      <% end %>
+      <%= link_to "完了する", complete_task_path(task), data: { turbo_method: :patch, turbo_confirm: "完了します(Todo一覧から消えます)" }, class: "bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded" %>
+
+    </div>
+    <div class="flex gap-2 mt-2 sm:mt-0">
+      <%= link_to "編集", edit_task_path(task), class: "bg-gray-400 hover:bg-gray-500 text-white py-1 px-3 rounded transition" %>
+      <%= link_to "削除", task_path(task), 
+            data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか?" }, 
+            class: "bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded transition" %>
+    </div>
+  </div>
+<% end %>

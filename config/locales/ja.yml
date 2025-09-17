@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      task: "タスク"
+    attributes:
+      task:
+        title: "Todo"
+        due_date: "期限"
+    errors:
+      models:
+        task:
+          attributes:
+            title:
+              blank: "を入力してください"
+            due_date:
+              blank: "を入力してください"

@@ -1,0 +1,10 @@
+<div class="container mx-auto px-4 py-8 max-w-lg">
+
+  <div class="bg-white shadow-md rounded p-6 mb-6">
+    <%= render "form", task: @task, submit_label: "Todoを作成する" %>
+  </div>
+
+  <p class="text-center">
+    <%= link_to "Todo一覧に戻る", tasks_path, class: "inline-block bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded transition" %>
+  </p>
+</div>

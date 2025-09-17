@@ -1,0 +1,7 @@
+<turbo-frame id="task_<%= @task.id %>">
+  <div class="container mx-auto px-4 py-8 max-w-lg">
+    <div class="bg-white shadow-md rounded p-6">
+      <%= render "form", task: @task, submit_label: "Todoを更新する" %>
+    </div>
+  </div>
+</turbo-frame>

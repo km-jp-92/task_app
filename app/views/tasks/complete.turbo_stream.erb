@@ -1,0 +1,13 @@
+<%= turbo_stream.remove @task %>
+
+<%= turbo_stream.update "flash" do %>
+  <% if flash.now[:notice] %>
+    <p class="bg-blue-100 text-blue-800 border border-blue-200 rounded px-4 py-2 m-2">
+      <%= flash.now[:notice] %>
+    </p>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.update "completed_count" do %>
+  累計完了タスク数：<%= current_user.tasks.completed.count %> 件
+<% end %>
